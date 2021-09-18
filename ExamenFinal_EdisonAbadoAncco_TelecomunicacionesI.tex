@@ -1,0 +1,729 @@
+\documentclass[11pt]{article}
+\usepackage[spanish]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{listings}
+\usepackage[usenames]{color} %seteamos el uso de nombre y color
+\definecolor{gray97}{gray}{.97}%definimos nombre y color
+\usepackage{textcomp}
+\lstset{
+	frame=Ltb,
+	framerule=1pt,
+	framextopmargin=5pt, %margen de arriba
+	framexbottommargin=5pt, %margen de abajo
+	framexleftmargin= 2pt, %separacion del margen izquierdo
+	framesep=5pt,
+	rulesep=0.3pt,
+	backgroundcolor=\color{gray97},
+	rulesepcolor=,
+	tabsize=2,
+	rulecolor=\color[RGB]{106, 182, 217}, %AZUL
+	upquote=true,
+	aboveskip={2\baselineskip}, %despues de la linea de texto
+	columns=fixed,
+	showstringspaces=false,
+	extendedchars=true,
+	breaklines=true,
+	prebreak = \raisebox{0ex}[0ex][0ex]{\ensuremath{\hookleftarrow}},
+	showtabs=false,
+	showspaces=false,
+	showstringspaces=false,
+	basicstyle=\scriptsize\ttfamily\color[RGB]{39, 100, 46}, %Numeros de lineas, simbolos, puntos y coma y demas
+	identifierstyle=\ttfamily\color[RGB]{56, 140, 189}, %variables
+	commentstyle=\color[RGB]{62, 179, 101}, %comentarios
+	stringstyle=\color[RGB]{247, 165, 42}, %impresiones
+	keywordstyle=\bfseries\color[RGB]{237, 118, 150}, %funciones
+	%
+	numbers=left,
+	numbersep=1pt, %separacion del numero
+	numberstyle=\tiny,
+	numberfirstline = false,
+	breaklines=true,
+}
+\usepackage{textcomp}
+\usepackage{graphicx}
+\usepackage[colorinlistoftodos]{todonotes}
+\usepackage{eso-pic}
+\usepackage{avant}
+\usepackage[top=2cm,bottom=2cm,left=2.5cm,right=2.5cm,headsep=8pt,a4paper]{geometry}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+%\fancyhead[LE,RO]{UNSAAC 2019-II}
+%\fancyhead[RE,LO]{Ingenieria Electrónica}
+%\fancyfoot[CE,CO]{\leftmark}
+\fancyfoot[CO]{\thepage}
+\renewcommand{\headrulewidth}{1pt}
+\renewcommand{\footrulewidth}{1pt}
+\usepackage{tabu}
+\usepackage{array}
+\usepackage{multirow}
+\usepackage{amssymb}
+\usepackage{makeidx}
+\usepackage{wrapfig}
+\usepackage{enumerate}
+\usepackage{amsmath,tikz}
+\usepackage{steinmetz}
+\newcommand*{\horzbar}{\rule[0.05ex]{2.5ex}{0.5pt}}
+\usepackage{calc}
+\usepackage{dsfont}
+\usepackage{enumitem}
+\usepackage{subfig}
+\usepackage{tabularx}
+
+\title{
+	\textsc{Universidad Nacional de San Antonio Abad del Cusco}\\
+	\textbf{Compuertas Lógicas}\\
+	Preinforme 1}
+
+\author{
+	\begin{tabular}{lr}
+		Edison \textsc{Abado Ancco} & 145012 \\
+	\end{tabular}
+}
+
+
+\begin{document}
+	
+	\begin{titlepage}
+		\newcommand{\HRule}{\rule{\linewidth}{0.5mm}} 
+		\center
+		\textsc{\LARGE  Universidad Nacional de San \\[0.2cm] Antonio Abad del Cusco}\\[1.5cm] 
+		\includegraphics[width=4cm]{IMAGENES/escudo}\\[1cm]
+		\textsc{\Large Facultad de Ingeniería Eléctrica, \\ Electrónica, Informática y Mecánica}\\[0.5cm] 
+		\textsc{\large Escuela Profesional de Ingeniería Electrónica}\\[0.5cm]
+		\textsc{\Large \textbf{Telecomunicaciones I}}\\[0.5cm] 
+		\HRule \\[0.4cm]
+		{ \huge \bfseries Radiodifusión sonora FM en la región de Cusco}\\[0.4cm] 
+		\HRule \\[1.5cm]
+		\begin{minipage}{\textwidth}
+			\center 
+			
+			\emph{Profesor:} \\
+			Ing. Fernando \textsc{Tagle Carbajal } \\[1cm]
+			
+			\begin{tabular}{ll}
+				\emph{Alumno:} & \emph{Código:}\\
+				Edison \textsc{Abado Ancco} & 145012 \\
+			\end{tabular}
+		\end{minipage}\\[2cm]
+		\today
+	\end{titlepage}
+	
+	
+	\newpage
+	
+	
+\section{Acomayo - Acomayo}
+
+\begin{itemize}
+	\item Plan Aprobado por RVM Nº 426-2014-MTC/03 (28/07/2014)
+	\item Con Restricción RD Nº 1676-2017-MTC/28 (18/08/2017)
+\end{itemize}
+
+El Registro Nacional de Frecuencias incluye como "autorizadas" a las estaciones con autorización vigente o que se encuentran en proceso de renovación, y no cuentan con resolución que la deje sin efecto o extinción firme. El estado “cautelar” corresponde a estaciones cuya autorización ha sido cancelada en la vía administrativa, pero cuentan con una medida cautelar otorgada por el Poder Judicia.
+
+\subsection{Número de estaciones de Transmisión FM}
+
+\begin{tabular}{|r|r|} \hline
+	Canalización 			& 20 \\ \hline
+	Autorizaciones			& 16 \\ \hline
+	Cautelar				& 0 \\ \hline
+	Reservado Estado		& 1 \\ \hline
+	Disponibilidad			& 3 \\ \hline
+	Trámite					& 2 \\ \hline 
+\end{tabular}
+
+\subsection{Límite de potencia de transmisión}
+
+La Potencia Efectiva Radiada máxima en la dirección de máxima ganancia de antena a ser autorizada en esta localidad será: 0.5 KW.
+	
+\subsection{Límites geográficos de autorización}
+
+La transmisioón está autorizada Para La provincia de Acomayo, y los distritos:
+
+\begin{itemize}
+	\item Acomayo 
+	\item Acopia 
+	\item Pomacanchi 
+	\item Sangarará
+\end{itemize}
+	
+
+
+\section{Anta - Anta}
+
+\begin{itemize}
+	\item Plan Aprobado por RVM Nº 108-2004-MTC/03 (10/07/2004)
+	\item Con Restricción RD Nº 2189-2005-MTC/17 (12/01/2006)
+	\item Concurso Público Nº 02-2012-MTC/28 (17/11/2012), RD Nº 1555-2012-MTC/28 (07/11/2012)
+\end{itemize}
+
+El Registro Nacional de Frecuencias incluye como "autorizadas" a las estaciones con autorización vigente o que se encuentran en proceso de renovación, y no cuentan con resolución que la deje sin efecto o extinción firme. El estado “cautelar” corresponde a estaciones cuya autorización ha sido cancelada en la vía administrativa, pero cuentan con una medida cautelar otorgada por el Poder Judicia.
+
+\subsection{Número de estaciones de Transmisión FM}
+
+\begin{tabular}{|r|r|} \hline
+	Canalización 			& 20 \\ \hline
+	Autorizaciones			& 24 \\ \hline
+	Cautelar				& 0 \\ \hline
+	Reservado Estado		& 2 \\ \hline
+	Disponibilidad			& 2 \\ \hline
+	Trámite					& 1 \\ \hline 
+\end{tabular}
+
+\subsection{Límite de potencia de transmisión}
+
+La Potencia Efectiva Radiada máxima en la dirección de máxima ganancia de antena a ser autorizada en esta localidad será: 0.5 KW.
+
+\subsection{Límites geográficos de autorización}
+
+La transmisioón está autorizada para llegar hasta la provincia de Anta y Urubamba, los distritos/centro poblado:
+
+\begin{itemize}
+	\item Ancahuasi
+	\item Anta 
+	\item Huarocondo 
+	\item Pucyura
+	\item Zurite
+	\item Chinchero
+	\item Huayllabamba
+	\item Maras
+	\item Ollantaytambo
+	\item Urubamba
+	\item Yucay
+\end{itemize}
+
+
+
+
+\section{Calca - Calca}
+
+\begin{itemize}
+	\item Plan Aprobado por RVM Nº 108-2004-MTC/03 (10/07/2004)
+	\item Con Restricción RD Nº 067-2011-MTC/28 (29/01/2011)
+	\item Concurso Público Nº CP 02-2013-MTC/28 (18/12/2013), RD Nº 1841-2013-MTC/28 (12/12/2013)
+\end{itemize}
+
+El Registro Nacional de Frecuencias incluye como "autorizadas" a las estaciones con autorización vigente o que se encuentran en proceso de renovación, y no cuentan con resolución que la deje sin efecto o extinción firme. El estado “cautelar” corresponde a estaciones cuya autorización ha sido cancelada en la vía administrativa, pero cuentan con una medida cautelar otorgada por el Poder Judicia.
+
+\subsection{Número de estaciones de Transmisión FM}
+
+\begin{tabular}{|r|r|} \hline
+	Canalización 			& 14 \\ \hline
+	Autorizaciones			& 12 \\ \hline
+	Cautelar				& 0 \\ \hline
+	Reservado Estado		& 1 \\ \hline
+	Disponibilidad			& 1 \\ \hline
+	Trámite					& 1 \\ \hline 
+\end{tabular}
+
+\subsection{Límite de potencia de transmisión}
+
+La Potencia Efectiva Radiada máxima en la dirección de máxima ganancia de antena a ser autorizada en esta localidad será: 0.5 KW.
+
+\subsection{Límites geográficos de autorización}
+
+La transmisioón está autorizada para llegar hasta la provincia de Calca, los distritos/centro poblado:
+
+\begin{itemize}
+	\item Calca
+	\item Calca - Totora
+	\item Coya
+	\item Lamay
+\end{itemize}
+
+
+\section{Canas - Yanaoca}
+
+\begin{itemize}
+	\item Plan Aprobado por RVM Nº 108-2004-MTC/03 (10/07/2004)
+	\item Con Restricción RD Nº 2908-2017-MTC/28 (19/01/2018)
+\end{itemize}
+
+El Registro Nacional de Frecuencias incluye como "autorizadas" a las estaciones con autorización vigente o que se encuentran en proceso de renovación, y no cuentan con resolución que la deje sin efecto o extinción firme. El estado “cautelar” corresponde a estaciones cuya autorización ha sido cancelada en la vía administrativa, pero cuentan con una medida cautelar otorgada por el Poder Judicia.
+
+\subsection{Número de estaciones de Transmisión FM}
+
+\begin{tabular}{|r|r|} \hline
+	Canalización 			& 15 \\ \hline
+	Autorizaciones			& 10 \\ \hline
+	Cautelar				& 0 \\ \hline
+	Reservado Estado		& 1 \\ \hline
+	Disponibilidad			& 4 \\ \hline
+	Trámite					& 1 \\ \hline 
+\end{tabular}
+
+\subsection{Límite de potencia de transmisión}
+
+La Potencia Efectiva Radiada máxima en la dirección de máxima ganancia de antena a ser autorizada en esta localidad será: 0.5 KW.
+
+\subsection{Límites geográficos de autorización}
+
+La transmisioón está autorizada para llegar hasta la provincia de Canas, el distrito/centro poblado:
+
+\begin{itemize}
+	\item Yanaoca
+\end{itemize}
+
+
+
+\section{Canchis - Sicuani}
+
+\begin{itemize}
+	\item Plan Aprobado por RVM Nº 108-2004-MTC/03 (10/07/2004)
+	\item Con Restricción RD Nº 1806-2006-MTC/17 (02/09/2006)
+	\item Concurso Público Nº 01-2020-MTC/28 (30/12/2020), RD Nº 1891-2020-MTC/28 (30/12/2020)
+\end{itemize}
+
+El Registro Nacional de Frecuencias incluye como "autorizadas" a las estaciones con autorización vigente o que se encuentran en proceso de renovación, y no cuentan con resolución que la deje sin efecto o extinción firme. El estado “cautelar” corresponde a estaciones cuya autorización ha sido cancelada en la vía administrativa, pero cuentan con una medida cautelar otorgada por el Poder Judicia.
+
+\subsection{Número de estaciones de Transmisión FM}
+
+\begin{tabular}{|r|r|} \hline
+	Canalización 			& 28 \\ \hline
+	Autorizaciones			& 25 \\ \hline
+	Cautelar				& 0 \\ \hline
+	Reservado Estado		& 1 \\ \hline
+	Disponibilidad			& 2 \\ \hline
+	Trámite					& 1 \\ \hline 
+\end{tabular}
+
+\subsection{Límite de potencia de transmisión}
+
+La Potencia Efectiva Radiada máxima en la dirección de máxima ganancia de antena a ser autorizada en esta localidad será: 1 KW.
+
+\subsection{Límites geográficos de autorización}
+
+La transmisioón está autorizada para llegar hasta la provincia de Canchis, el distrito/centro poblado:
+
+\begin{itemize}
+	\item Combapata
+	\item Marangani
+	\item San Pablo
+	\item San Pedro
+	\item Sicuani
+	\item Tinta
+\end{itemize}
+
+
+
+\section{Chumbivilcas - Santo Tomas}
+
+\begin{itemize}
+	\item Plan Aprobado por RVM Nº 426-2014-MTC/03 (28/07/2014)
+	\item Con Restricción RD Nº 1676-2017-MTC/28 (18/08/2017)
+\end{itemize}
+
+El Registro Nacional de Frecuencias incluye como "autorizadas" a las estaciones con autorización vigente o que se encuentran en proceso de renovación, y no cuentan con resolución que la deje sin efecto o extinción firme. El estado “cautelar” corresponde a estaciones cuya autorización ha sido cancelada en la vía administrativa, pero cuentan con una medida cautelar otorgada por el Poder Judicia.
+
+\subsection{Número de estaciones de Transmisión FM}
+
+\begin{tabular}{|r|r|} \hline
+	Canalización 			& 20 \\ \hline
+	Autorizaciones			& 17 \\ \hline
+	Cautelar				& 0 \\ \hline
+	Reservado Estado		& 1 \\ \hline
+	Disponibilidad			& 2 \\ \hline
+	Trámite					& 0 \\ \hline 
+\end{tabular}
+
+\subsection{Límite de potencia de transmisión}
+
+La Potencia Efectiva Radiada máxima en la dirección de máxima ganancia de antena a ser autorizada en esta localidad será: 0.25 KW.
+
+\subsection{Límites geográficos de autorización}
+
+La transmisioón está autorizada para llegar hasta la provincia de Chumbivilcas, el distrito/centro poblado:
+
+\begin{itemize}
+	\item Santo Tomas
+\end{itemize}
+
+
+
+\section{Cusco - Cusco}
+
+\begin{itemize}
+	\item Plan Aprobado por RVM Nº 108-2004-MTC/03 (10/07/2004)
+	\item Con Restricción RD Nº 1164-2006-MTC/17 (28/06/2006)
+	\item Concurso Público Nº 01-2015-MTC/28 (30/12/2015), RD Nº 2129-2015-MTC/28 (29/12/2015)
+\end{itemize}
+
+El Registro Nacional de Frecuencias incluye como "autorizadas" a las estaciones con autorización vigente o que se encuentran en proceso de renovación, y no cuentan con resolución que la deje sin efecto o extinción firme. El estado “cautelar” corresponde a estaciones cuya autorización ha sido cancelada en la vía administrativa, pero cuentan con una medida cautelar otorgada por el Poder Judicia.
+
+\subsection{Número de estaciones de Transmisión FM}
+
+\begin{tabular}{|r|r|} \hline
+	Canalización 			& 28 \\ \hline
+	Autorizaciones			& 24 \\ \hline
+	Cautelar				& 0 \\ \hline
+	Reservado Estado		& 1 \\ \hline
+	Disponibilidad			& 3 \\ \hline
+	Trámite					& 1 \\ \hline 
+\end{tabular}
+
+\subsection{Límite de potencia de transmisión}
+
+La Potencia Efectiva Radiada máxima en la dirección de máxima ganancia de antena a ser autorizada en esta localidad será: 1 KW.
+
+\subsection{Límites geográficos de autorización}
+
+La transmisioón está autorizada para llegar hasta la provincia de Anta y Cusco, el distrito/centro poblado:
+
+\begin{itemize}
+	\item Cachimayo
+	\item Cusco
+	\item Poroy
+	\item Poroy
+	\item San Jeronimo
+	\item San Sebastian
+	\item Santiago
+	\item Saylla
+	\item Wanchaq
+\end{itemize}
+
+
+
+\section{Espinar - Espinar}
+
+\begin{itemize}
+	\item Plan Aprobado por RVM Nº 426-2014-MTC/03 (28/07/2014)
+	\item Con Restricción RD Nº 1135-2012-MTC/28 (26/09/2012)
+	\item Concurso Público Nº CP 02-2013-MTC/28 (18/12/2013), RD Nº 1841-2013-MTC/28 (12/12/2013)
+\end{itemize}
+
+El Registro Nacional de Frecuencias incluye como "autorizadas" a las estaciones con autorización vigente o que se encuentran en proceso de renovación, y no cuentan con resolución que la deje sin efecto o extinción firme. El estado “cautelar” corresponde a estaciones cuya autorización ha sido cancelada en la vía administrativa, pero cuentan con una medida cautelar otorgada por el Poder Judicia.
+
+\subsection{Número de estaciones de Transmisión FM}
+
+\begin{tabular}{|r|r|} \hline
+	Canalización 			& 29 \\ \hline
+	Autorizaciones			& 22 \\ \hline
+	Cautelar				& 0 \\ \hline
+	Reservado Estado		& 2 \\ \hline
+	Disponibilidad			& 5 \\ \hline
+	Trámite					& 0 \\ \hline 
+\end{tabular}
+
+\subsection{Límite de potencia de transmisión}
+
+La Potencia Efectiva Radiada máxima en la dirección de máxima ganancia de antena a ser autorizada en esta localidad será: 1 KW.
+
+\subsection{Límites geográficos de autorización}
+
+La transmisioón está autorizada para llegar hasta la provincia de Espinar, el distrito/centro poblado:
+
+\begin{itemize}
+	\item Alto Pichigua
+	\item Coporaque
+	\item Espinar
+	\item Pichigua
+\end{itemize}
+
+
+
+\section{La convención - Santa Ana}
+
+\begin{itemize}
+	\item Plan Aprobado por RVM Nº 108-2004-MTC/03 (10/07/2004)
+	\item Con Restricción RD Nº 3548-2010-MTC/28 (12/11/2010)
+	\item Concurso Público Nº 02-2019-MTC/28 (23/09/2019), RD Nº 2770-2019-MTC/28 (20/09/2019)
+\end{itemize}
+
+El Registro Nacional de Frecuencias incluye como "autorizadas" a las estaciones con autorización vigente o que se encuentran en proceso de renovación, y no cuentan con resolución que la deje sin efecto o extinción firme. El estado “cautelar” corresponde a estaciones cuya autorización ha sido cancelada en la vía administrativa, pero cuentan con una medida cautelar otorgada por el Poder Judicia.
+
+\subsection{Número de estaciones de Transmisión FM}
+
+\begin{tabular}{|r|r|} \hline
+	Canalización 			& 28 \\ \hline
+	Autorizaciones			& 19 \\ \hline
+	Cautelar				& 0 \\ \hline
+	Reservado Estado		& 1 \\ \hline
+	Disponibilidad			& 8 \\ \hline
+	Trámite					& 1 \\ \hline 
+\end{tabular}
+
+\subsection{Límite de potencia de transmisión}
+
+La Potencia Efectiva Radiada máxima en la dirección de máxima ganancia de antena a ser autorizada en esta localidad será: 1 KW.
+
+\subsection{Límites geográficos de autorización}
+
+La transmisioón está autorizada para llegar hasta la provincia de La Convención, el distrito/centro poblado:
+
+\begin{itemize}
+	\item Maranura
+	\item Santa Ana
+\end{itemize}
+
+
+
+\section{Paruro - Paruro}
+
+\begin{itemize}
+	\item Plan Aprobado por RVM Nº 426-2014-MTC/03 (28/07/2014)
+	\item Con Restricción RD Nº 0265-2017-MTC/28 (15/03/2017)
+\end{itemize}
+
+El Registro Nacional de Frecuencias incluye como "autorizadas" a las estaciones con autorización vigente o que se encuentran en proceso de renovación, y no cuentan con resolución que la deje sin efecto o extinción firme. El estado “cautelar” corresponde a estaciones cuya autorización ha sido cancelada en la vía administrativa, pero cuentan con una medida cautelar otorgada por el Poder Judicia.
+
+\subsection{Número de estaciones de Transmisión FM}
+
+\begin{tabular}{|r|r|} \hline
+	Canalización 			& 16 \\ \hline
+	Autorizaciones			& 8 \\ \hline
+	Cautelar				& 0 \\ \hline
+	Reservado Estado		& 2 \\ \hline
+	Disponibilidad			& 6 \\ \hline
+	Trámite					& 0 \\ \hline 
+\end{tabular}
+
+\subsection{Límite de potencia de transmisión}
+
+La Potencia Efectiva Radiada máxima en la dirección de máxima ganancia de antena a ser autorizada en esta localidad será: 0.5 KW.
+
+\subsection{Límites geográficos de autorización}
+
+La transmisioón está autorizada para llegar hasta la provincia de Paruro, el distrito/centro poblado:
+
+\begin{itemize}
+	\item Rondocan
+	\item Colcha
+	\item Paruro
+\end{itemize}
+
+
+
+\section{Paucartambo - Paucartambo}
+
+\begin{itemize}
+	\item Plan Aprobado por RVM Nº 426-2014-MTC/03 (28/07/2014)
+	\item Con Restricción RD Nº 1953-2016-MTC/28 (17/12/2016)
+\end{itemize}
+
+El Registro Nacional de Frecuencias incluye como "autorizadas" a las estaciones con autorización vigente o que se encuentran en proceso de renovación, y no cuentan con resolución que la deje sin efecto o extinción firme. El estado “cautelar” corresponde a estaciones cuya autorización ha sido cancelada en la vía administrativa, pero cuentan con una medida cautelar otorgada por el Poder Judicia.
+
+\subsection{Número de estaciones de Transmisión FM}
+
+\begin{tabular}{|r|r|} \hline
+	Canalización 			& 15 \\ \hline
+	Autorizaciones			& 8 \\ \hline
+	Cautelar				& 0 \\ \hline
+	Reservado Estado		& 0 \\ \hline
+	Disponibilidad			& 7 \\ \hline
+	Trámite					& 0 \\ \hline 
+\end{tabular}
+
+\subsection{Límite de potencia de transmisión}
+
+La Potencia Efectiva Radiada máxima en la dirección de máxima ganancia de antena a ser autorizada en esta localidad será: 0.5 KW.
+
+\subsection{Límites geográficos de autorización}
+
+La transmisioón está autorizada para llegar hasta la provincia de Paucartambo, el distrito/centro poblado:
+
+\begin{itemize}
+	\item Challabamba
+	\item Colquepata
+	\item Paucartambo
+\end{itemize}
+
+
+
+\section{Quispicanchi - Urcos}
+
+\begin{itemize}
+	\item Plan Aprobado por RVM Nº 1141-2016-MTC/03 (27/07/2016)
+	\item Con Restricción RD Nº 1776-2012-MTC/28 (18/01/2013)
+	\item Concurso Público Nº 01-2015-MTC/28 (30/12/2015), RD Nº 2129-2015-MTC/28 (29/12/2015)
+\end{itemize}
+
+El Registro Nacional de Frecuencias incluye como "autorizadas" a las estaciones con autorización vigente o que se encuentran en proceso de renovación, y no cuentan con resolución que la deje sin efecto o extinción firme. El estado “cautelar” corresponde a estaciones cuya autorización ha sido cancelada en la vía administrativa, pero cuentan con una medida cautelar otorgada por el Poder Judicia.
+
+\subsection{Número de estaciones de Transmisión FM}
+
+\begin{tabular}{|r|r|} \hline
+	Canalización 			& 26 \\ \hline
+	Autorizaciones			& 21 \\ \hline
+	Cautelar				& 0 \\ \hline
+	Reservado Estado		& 2 \\ \hline
+	Disponibilidad			& 3 \\ \hline
+	Trámite					& 0 \\ \hline 
+\end{tabular}
+
+\subsection{Límite de potencia de transmisión}
+
+La Potencia Efectiva Radiada máxima en la dirección de máxima ganancia de antena a ser autorizada en esta localidad será: 0.5 KW.
+
+\subsection{Límites geográficos de autorización}
+
+La transmisioón está autorizada para llegar hasta la provincia de Paucartambo y Quispicanchi, el distrito/centro poblado:
+
+\begin{itemize}
+	\item Caicay
+	\item Andahuaylillas
+	\item Huaro
+	\item Lucre
+	\item Oropesa
+	\item Urcos
+\end{itemize}
+
+
+
+\section{Urubamba - Urubamba}
+
+\begin{itemize}
+	\item Plan Aprobado por RVM Nº 108-2004-MTC/03 (10/07/2004)
+	\item Con Restricción RD Nº 2189-2005-MTC/17 (12/01/2006)
+	\item Concurso Público Nº 02-2012-MTC/28 (17/11/2012), RD Nº 1555-2012-MTC/28 (07/11/2012)
+\end{itemize}
+
+El Registro Nacional de Frecuencias incluye como "autorizadas" a las estaciones con autorización vigente o que se encuentran en proceso de renovación, y no cuentan con resolución que la deje sin efecto o extinción firme. El estado “cautelar” corresponde a estaciones cuya autorización ha sido cancelada en la vía administrativa, pero cuentan con una medida cautelar otorgada por el Poder Judicia.
+
+\subsection{Número de estaciones de Transmisión FM}
+
+\begin{tabular}{|r|r|} \hline
+	Canalización 			& 28 \\ \hline
+	Autorizaciones			& 24 \\ \hline
+	Cautelar				& 0 \\ \hline
+	Reservado Estado		& 2 \\ \hline
+	Disponibilidad			& 2 \\ \hline
+	Trámite					& 1 \\ \hline 
+\end{tabular}
+
+\subsection{Límite de potencia de transmisión}
+
+La Potencia Efectiva Radiada máxima en la dirección de máxima ganancia de antena a ser autorizada en esta localidad será: 0.5 KW.
+
+\subsection{Límites geográficos de autorización}
+
+La transmisioón está autorizada para llegar hasta la provincia de Anta y Urubamba, el distrito/centro poblado:
+
+\begin{itemize}
+	\item Arcahuasi
+	\item Anta
+	\item Huarocondo
+	\item Pucyura
+	\item Zurite
+	\item Chinchero
+	\item Huayllabamba
+	\item Maras
+	\item Ollantaytambo
+	\item Urubamba
+	\item Yucay
+\end{itemize}
+
+
+\section{Procedimiento para obtener autorización de emisión en radiodifusión}
+
+\subsection{Conceptos Generales}
+Es un servicio de telecomunicaciones, cuya 
+programación es recibida por el público en 
+general. 
+
+Se clasifica en 
+
+\begin{itemize}
+	\item Por la modalidad de operación
+	\begin{itemize}
+		\item Sonora: a su vez se clasifica en: 
+		Frecuencia Modulada, Onda Media y 
+		Onda Corta (Tropical e Internacional).
+		\item Por televisión: a  su  vez  se  clasifica  en: 
+		VHF y UHF
+	\end{itemize}
+	\item Por la finalidad:
+	\begin{itemize}
+		\item Comercial
+		\item Educativa
+		\item Comunitaria
+	\end{itemize}
+\end{itemize}
+
+\subsubsection{Radiodifusión Comercial}
+La Radiodifusión es aquella cuyos programas contienen temas 
+relacionados  con  el  entretenimiento,  recreación, 
+información,  noticiosos  y  de  orientación  de  la 
+comunidad.
+
+\subsubsection{Radiodifusión Comercial}
+Es aquella cuyos programas contienen temas 
+relacionados,  principalmente,  con  la  educación, 
+cultura y deporte. 
+
+\subsubsection{Radiodifusión Educativa}
+
+Es aquella cuyos programas contienen temas 
+relacionados, principalmente, con el fomento de 
+la identidad, costumbres de la comunidad e 
+integración nacional. La estación radiodifusora  debe necesariamente 
+ubicarse  en  comunidades  campesinas,  nativas  e 
+indígenas,  áreas  rurales  o  de  preferente  interés 
+social. 
+
+\subsection{Procedimiento}
+
+Cualquier persona sea natural o persona jurídica puede prestar el servicio . Para la prestación del servicio de radiodifusión se 
+requiere  contar  con  una  autorización  otorgada 
+por resolución del Viceministro de 
+Comunicaciones.
+
+Para la prestación de servicio se necesita una autorización que es la que faculta la prestación de un servicio de radiodifusión. La solicitud se presenta 
+ante  la  Dirección  General  de  Autorizaciones  en 
+Telecomunicaciones.  Para  tal  efecto  se  deberá 
+emplear los formatos que están disponibles en la 
+página web del MTC (www.mtc.gob.pe)
+
+Las autorizaciones se otorgan por un plazo 
+máximo de diez (10) años. 
+
+\subsubsection{Procedimientos están sujetos al silencio  administrativo positivo}
+
+\begin{itemize}
+	\item Transferencia de autorización. 
+	\item Renovación de autorización. 
+	\item Transferencia de acciones, participaciones, 
+	titularidad y modificación del representante 
+	legal, directorio o consejo directivo.
+\end{itemize}
+
+\subsubsection{Procedimientos están sujetos al silencio administrativo negativo}
+\begin{itemize}
+	\item Autorización para prestar el servicio de 
+	radiodifusión.
+	\item Modificación de características técnicas 
+	(aumento de potencia y cambio de ubicación de 
+	la  planta  transmisora)  y  de  condición  esencial 
+	(frecuencia o canal asignado). 
+	\item Otorgamiento de pago fraccionado.
+	\item Otorgamiento de nuevo pago fraccionado.
+\end{itemize}
+
+\subsubsection{Las modalidades de otorgamiento de una Autorización}
+\begin{enumerate}
+	\item A solicitud de Parte
+	\item Por Concurso público
+\end{enumerate}
+
+El otorgamiento de 
+autorización a solicitud de parte procede cuando el número de frecuencias o canales 
+disponibles  en  una  misma  banda  y  localidad  es 
+superior a las solicitudes admitidas.
+
+Una Autorización por concurso público se otorga cuando existe restricción en la disponibilidad de 
+frecuencias  o  canales  en  una  misma  banda  y 
+localidad. 
+
+La restricción en la disponibilidad de frecuencias o canales es  cuando  el  número  de  frecuencias  o  canales 
+disponibles  es  inferior  al  número  de  solicitudes 
+admitidas.
+
+Las frecuencias o 
+canales que pueden autorizarse en una 
+determinada localidad se  enumeran  en  los  Planes  de  Canalización  y 
+Asignación de Frecuencias, allí se indican el 
+máximo de frecuencias o canales que pueden ser 
+asignados en una localidad. 
+	
+\end{document}
